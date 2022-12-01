@@ -224,6 +224,9 @@
         function countdown() {
             const currentDate = new Date();
             const totalSeconds = (targetDate  - currentDate) / 1000;
+            
+            handleRefresh(totalSeconds);
+
 
             const days = Math.floor(totalSeconds / 3600 / 24);
             const hours = Math.floor(totalSeconds / 3600) % 24;
@@ -238,7 +241,6 @@
             });
 
             if (totalSeconds > 0) {
-
                 daysEl.innerHTML = days;
                 hoursEl.innerHTML = formatTime(hours);
                 minsEl.innerHTML = formatTime(mins);
@@ -271,6 +273,7 @@
         }
 
         function complete() {
+            console.log('Completed!', new Date());
             updateClock();
             setInterval(updateClock, 1000);
             document.querySelector('#done').style.display = '';
@@ -292,6 +295,18 @@
                 elem.msRequestFullscreen();
             }
           }
+        
+        
+        function handleRefresh(t) {
+            const seconds = 60 * 15;
+            if (t > 3600 && t % seconds === 0) {
+                // refresh every
+                console.log('Refresh!', new Date());
+                location.reload(true);
+            }
+        }
+        
+        console.log('Started!', new Date());
 
     </script>
 </body>
