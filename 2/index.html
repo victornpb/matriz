@@ -209,6 +209,7 @@
     <script>
 
         const EVENT_DATE = new Date('2022-12-07 18:00:00');
+        const AUTO_REFRESH_INTERVAL = 60;
 
         const DEMO = location.hash.match(/test/);
         const targetDate = DEMO ? new Date(Date.now()+(5*1000)) : EVENT_DATE;
@@ -283,7 +284,7 @@
         }
 
         // initial call
-        var t = setInterval(countdown, 1000);
+        var t = setInterval(countdown, 500);
         countdown();
         
         function openFullscreen(elem) {
@@ -298,7 +299,7 @@
         
         
         function handleRefresh(t) {
-            const seconds = 60 * 15;
+            const seconds = AUTO_REFRESH_INTERVAL;
             if (t > 3600 && t % seconds === 0) {
                 // refresh every
                 console.log('Refresh!', new Date());
