@@ -78,20 +78,20 @@
             margin-top: 10vh;
         }
 
-        .unit-label {
+        
+        .section {
+            display: inline-block;
+        }
+        
+        .digit {
+            display: inline-block;
+            font-size: 14vw;
+            min-width: 14vw;
+        }
+        
+        .caption {
             font-size: 3vw;
             margin-top: 1.5vw;
-        }
-
-        .unit-group {
-            display: inline-block;
-            
-        }
-
-        .digit-group {
-            display: inline-block;
-            font-size: 14.5vw;
-            min-width: 14vw;
         }
 
         .counter-sep {
@@ -164,24 +164,24 @@
             </h1>
             <div>
                 <div class="counter" id="timer-display">
-                    <div class="unit-group">
-                        <div class="digit-group" id="days">00</div>
-                        <div class="unit-label">dias</div>
+                    <div class="section">
+                        <div class="digit" id="days">00</div>
+                        <div class="caption">dias</div>
                     </div>
                     <div class="counter-sep">:</div>
-                    <div class="unit-group">
-                        <div class="digit-group" id="hours">00</div>
-                        <div class="unit-label">horas</div>
+                    <div class="section">
+                        <div class="digit" id="hours">00</div>
+                        <div class="caption">horas</div>
                     </div>
                     <div class="counter-sep">:</div>
-                    <div class="unit-group">
-                        <div class="digit-group" id="mins">00</div>
-                        <div class="unit-label">minutos</div>
+                    <div class="section">
+                        <div class="digit" id="mins">00</div>
+                        <div class="caption">minutos</div>
                     </div>
                     <div class="counter-sep">:</div>
-                    <div class="unit-group">
-                        <div class="digit-group" id="seconds">00</div>
-                        <div class="unit-label">segundos</div>
+                    <div class="section">
+                        <div class="digit" id="seconds">00</div>
+                        <div class="caption">segundos</div>
                     </div>
                 </div>
             </div>
