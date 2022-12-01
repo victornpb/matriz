@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Countdown Timer</title>
+    <style>
+        html,
+        body {
+            background-color: #000000;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #fff;
+            font-weight: 800;
+        }
+        #counter {
+            min-height: 100%;
+            text-align: center;
+            padding: 10px;
+            background-size: cover, auto;
+            background-position: center, center;
+            background-repeat: no-repeat, no-repeat;
+        }
+        #counter .counter {
+            line-height: 0.9;
+            display: inline-block;
+            margin: auto;
+            margin-top: 6vh;
+
+            padding: 1vw 1vw 1.8vw 1vw;
+            background: #000000;
+            border-radius: 1vw;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+        #counter h1 {
+            font-size: 5vw;
+        }
+
+        #counter h3 {
+            font-size: 4vw;
+            margin-top: 6vh;
+        }
+
+        .wrapper {
+            margin-top: 10vh;
+        }
+
+        .unit-label {
+            font-size: 3vw;
+            margin-top: 1.5vw;
+        }
+
+        .unit-group {
+            display: inline-block;
+        }
+
+        .digit-group {
+            display: inline-block;
+
+        }
+
+        .counter-dig {
+            display: inline-block;
+
+        }
+
+        .counter-dig .inner {
+            padding-top: 0.342vw;
+
+        }
+
+        .counter-sep {
+            display: inline-block;
+            vertical-align: top;
+
+            margin: 0 0.8vw;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="counter">
+        <div class="wrapper">
+            <h1>M A T R I Z</h1>
+            <div>
+                <div class="counter" id="timer-display" phx-update="ignore" phx-hook="Counter" data-cdt-counter-root=""
+                    data-remaining-time="412753" data-digit-background-format="all" data-digit-aspect-ratio="0.5">
+                    <div style="font-size: 14.625vw" class="unit-group">
+                        <div class="digit-group" id="days">
+                            <div class=" counter-dig" style=" width: 9vw">
+                                <div class="inner">0</div>
+                            </div>
+                            <div class=" counter-dig" style=" width: 9vw">
+                                <div class="inner">4</div>
+                            </div>
+                        </div>
+                        <div class="unit-label">dias</div>
+                    </div>
+                    <div style="font-size: 14.625vw" class="counter-sep">:</div>
+                    <div style="font-size: 14.625vw" class="unit-group">
+                        <div class="digit-group" id="hours">
+                            <div class=" counter-dig" style=" width: 9vw">
+                                <div class="inner">1</div>
+                            </div>
+                            <div class=" counter-dig" style=" width: 9vw">
+                                <div class="inner">8</div>
+                            </div>
+                        </div>
+                        <div class="unit-label">horas</div>
+                    </div>
+                    <div style="font-size: 14.625vw" class="counter-sep">:</div>
+                    <div style="font-size: 14.625vw" class="unit-group">
+                        <div class="digit-group" id="mins">
+                            <div class=" counter-dig" style=" width: 9vw">
+                                <div class="inner">3</div>
+                            </div>
+                            <div class=" counter-dig" style=" width: 9vw">
+                                <div class="inner">7</div>
+                            </div>
+                        </div>
+                        <div class="unit-label">minutos</div>
+                    </div>
+                    <div style="font-size: 14.625vw" class="counter-sep">:</div>
+                    <div style="font-size: 14.625vw" class="unit-group">
+                        <div class="digit-group" id="seconds">
+                            <div class=" counter-dig" style=" width: 9vw">
+                                <div class="inner">0</div>
+                            </div>
+                            <div class=" counter-dig" style=" width: 9vw">
+                                <div class="inner">3</div>
+                            </div>
+                        </div>
+                        <div class="unit-label">segundos</div>
+                    </div>
+                </div>
+            </div>
+            <h3>7 Dez, quarta-feira</h3>
+        </div>
+
+        <script>
+            const daysEl = document.getElementById('days');
+            const hoursEl = document.getElementById('hours');
+            const minsEl = document.getElementById('mins');
+            const secondsEl = document.getElementById('seconds');
+
+            // newYears = window.prompt('Enter a Date for Countdown', '2022-12-05T18:00:00-03:000');
+
+            function countdown() {
+                const newYearsDate = new Date('2022-12-07 18:00:00');
+                const currentDate = new Date();
+
+                const totalSeconds = (newYearsDate - currentDate) / 1000;
+
+                const days = Math.floor(totalSeconds / 3600 / 24);
+                const hours = Math.floor(totalSeconds / 3600) % 24;
+                const mins = Math.floor(totalSeconds / 60) % 60;
+                const seconds = Math.floor(totalSeconds) % 60;
+
+                if (totalSeconds > 0) {
+
+                    daysEl.innerHTML = days;
+                    hoursEl.innerHTML = formatTime(hours);
+                    minsEl.innerHTML = formatTime(mins);
+                    secondsEl.innerHTML = formatTime(seconds);
+
+                } else {
+                    daysEl.innerHTML = 0;
+                    hoursEl.innerHTML = formatTime(0);
+                    minsEl.innerHTML = formatTime(0);
+                    secondsEl.innerHTML = formatTime(0);
+                }
+            }
+
+            function formatTime(time) {
+                return time < 10 ? (`0${time}`) : time;
+            }
+
+            // initial call
+            countdown();
+
+            setInterval(countdown, 1000);
+
+        </script>
+</body>
+</html>
