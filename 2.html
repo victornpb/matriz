@@ -156,7 +156,7 @@
     </style>
 </head>
 
-<body>
+<body onclick="openFullscreen(this)">
     <div id="counter">
         <div class="wrapper">
             <h1>
@@ -282,6 +282,16 @@
         // initial call
         var t = setInterval(countdown, 1000);
         countdown();
+        
+        function openFullscreen(elem) {
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) { /* Safari */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE11 */
+                elem.msRequestFullscreen();
+            }
+          }
 
     </script>
 </body>
