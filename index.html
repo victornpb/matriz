@@ -77,7 +77,7 @@
     </style>
 </head>
 
-<body>
+<body onclick="openFullscreen(this)">
     <div id="counter">
         <div class="wrapper">
             <h1>M A T R I Z</h1>
@@ -149,6 +149,8 @@
                 const currentDate = new Date();
 
                 const totalSeconds = (newYearsDate - currentDate) / 1000;
+                
+                handleRefresh(totalSeconds);
 
                 const days = Math.floor(totalSeconds / 3600 / 24);
                 const hours = Math.floor(totalSeconds / 3600) % 24;
@@ -178,6 +180,24 @@
             countdown();
 
             setInterval(countdown, 1000);
+            
+            function openFullscreen(elem) {
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem.webkitRequestFullscreen) { /* Safari */
+                    elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE11 */
+                    elem.msRequestFullscreen();
+                }
+            }
+            
+            function handleRefresh(t) {
+                const seconds = 60 * 15;
+                if (t > 3600 && t % seconds === 0) {
+                    // refresh every
+                    location.reload(true);
+                }
+            }
 
         </script>
 </body>
